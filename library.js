@@ -30,7 +30,7 @@ function showBooks() {
     const bookListItem = document.createElement("div")
     const divText = document.createTextNode("new node")
     bookListItem.appendChild(divText)
-    divBookContainer.appendChild(bookListItem)
+    divBookContainer.appendChild(bookListItem)g
     myLibrary.forEach(element => {
 
 
