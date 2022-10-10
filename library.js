@@ -11,6 +11,12 @@ let myLibrary = [{
     author: "author2",
     pages: "pages2",
     read: "no"
+},
+{
+    title: "book3",
+    author: "author",
+    pages: "pages3",
+    read: "yes"
 }
 ];
 
@@ -24,21 +30,26 @@ function addBookToLibrary() {
 
 // write function to loop through the books and display them on a page
 function showBooks() {
-    //loop through and show books in myLibrary
+    // loop through and show books in myLibrary
 
-    const divBookContainer = document.getElementById("containerId")
-    const bookListItem = document.createElement("div")
-    const divText = document.createTextNode("new node")
-    bookListItem.appendChild(divText)
-    divBookContainer.appendChild(bookListItem)g
     myLibrary.forEach(element => {
+
+
+
+        const container = document.querySelector("#container")
+        const content = document.createElement("div")
+
+        content.classList.add('content')
+        content.textContent = 'This is a new div'
+
+
+        container.appendChild(content)
 
 
         console.log(element)
 
-
     });
-
 }
+
 
 showBooks();
