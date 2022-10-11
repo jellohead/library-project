@@ -40,13 +40,14 @@ function showBooks() {
     //     container.appendChild(content)
     // });
 
-    myLibrary.forEach(element => {
+    myLibrary.forEach((element) => {
+        console.dir({ element });
         const container = document.querySelector('#bookRowDiv');
         const content = document.createElement('div');
         content.classList.add('content');
         content.textContent = 'This is a new div';
         container.appendChild(content)
-    });
+    })
 }
 
 
