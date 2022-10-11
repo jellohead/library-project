@@ -36,12 +36,15 @@ function showBooks() {
 
 
 
-        const container = document.querySelector("#container")
+        const container = document.getElementById("container")
+        console.dir(container)
         const content = document.createElement("div")
+        console.log(content)
 
-        content.classList.add('content')
+        content.classList.add("content")
         content.textContent = 'This is a new div'
 
+        // document.getElementById("container").appendChild(content)
 
         container.appendChild(content)
 
