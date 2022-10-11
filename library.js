@@ -32,25 +32,20 @@ function addBookToLibrary() {
 function showBooks() {
     // loop through and show books in myLibrary
 
+    // myLibrary.forEach(element => {
+    //     const container = document.querySelector('#container');
+    //     const content = document.createElement('div');
+    //     content.classList.add('content');
+    //     content.textContent = 'This is a new div';
+    //     container.appendChild(content)
+    // });
+
     myLibrary.forEach(element => {
-
-
-
-        const container = document.getElementById("container")
-        console.dir(container)
-        const content = document.createElement("div")
-        console.log(content)
-
-        content.classList.add("content")
-        content.textContent = 'This is a new div'
-
-        // document.getElementById("container").appendChild(content)
-
+        const container = document.querySelector('#bookRowDiv');
+        const content = document.createElement('div');
+        content.classList.add('content');
+        content.textContent = 'This is a new div';
         container.appendChild(content)
-
-
-        console.log(element)
-
     });
 }
 
