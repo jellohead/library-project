@@ -40,14 +40,19 @@ function showBooks() {
     //     container.appendChild(content)
     // });
 
-    myLibrary.forEach(element => {
-        const container = document.querySelector('#bookRowDiv');
-        const content = document.createElement('div');
-        content.classList.add('content');
-        content.textContent = 'This is a new div';
-        container.appendChild(content)
+    myLibrary.forEach(function element(value, index) {
+        console.log(index);
+        console.log(value);
+        const container = document.querySelector('#bookRow');
+        const contentRow = document.createElement('tr');
+        contentRow.classList.add('contentRow' + (index + 1));
+        contentRow.textContent = 'This is a new row';
+        container.appendChild(contentRow)
     });
 }
 
 
-showBooks();
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    showBooks();
+});
