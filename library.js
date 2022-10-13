@@ -43,9 +43,9 @@ function showBooks() {
     myLibrary.forEach((element) => {
         console.dir({ element });
         const container = document.querySelector('#bookRowDiv');
-        const content = document.createElement('div');
+        const content = document.createElement('tr');
         content.classList.add('content');
-        content.textContent = 'This is a new div';
+        content.textContent = 'This is a new table row';
         container.appendChild(content)
     })
 }
