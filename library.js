@@ -30,24 +30,24 @@ function addBookToLibrary() {
 
 // write function to loop through the books and display them on a page
 function showBooks() {
-    // loop through and show books in myLibrary
-
-    // myLibrary.forEach(element => {
-    //     const container = document.querySelector('#container');
-    //     const content = document.createElement('div');
-    //     content.classList.add('content');
-    //     content.textContent = 'This is a new div';
-    //     container.appendChild(content)
-    // });
 
     myLibrary.forEach(function element(value, index) {
-        console.log(index);
-        console.log(value);
+        console.log("index is " + index);
+        console.log("value is ");
+        console.dir(value)
+        //add a row for myLibrary record
         const container = document.querySelector('#bookRow');
         const contentRow = document.createElement('tr');
         contentRow.classList.add('contentRow' + (index + 1));
-        contentRow.textContent = 'This is a new row';
+        contentRow.textContent = 'This is a new table row';
         container.appendChild(contentRow)
+        //add data from each book to the row
+        const rowContainer = document.querySelector('contentRow' + (index + 1))
+        const contentTD = document.createElement('td');
+
+
+
+
     });
 }
 
