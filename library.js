@@ -42,8 +42,9 @@ function showBooks() {
         contentRow.textContent = 'This is a new table row';
         container.appendChild(contentRow)
         //add data from each book to the row
-        const rowContainer = document.querySelector('contentRow' + (index + 1))
+        const rowContainer = document.querySelector('.contentRow' + (index + 1))
         const contentTD = document.createElement('td');
+        rowContainer.appendChild(contentTD)
 
 
 
