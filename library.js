@@ -39,15 +39,15 @@ function showBooks() {
         const container = document.querySelector('#bookRow');
         const contentRow = document.createElement('tr');
         contentRow.classList.add('contentRow' + (index + 1));
-        contentRow.textContent = 'This is a new table row';
+        // contentRow.textContent = 'This is a new table row';
         container.appendChild(contentRow)
-        //add data from each book to the row
-        const rowContainer = document.querySelector('.contentRow' + (index + 1))
-        const contentTD = document.createElement('td');
-        rowContainer.appendChild(contentTD)
+
         for (let key in value) {
-            console.log("in object loop")
-            console.dir(value[key])
+            //add data from each book to the row
+            const rowContainer = document.querySelector('.contentRow' + (index + 1))
+            const contentTD = document.createElement('td');
+            contentTD.textContent = value[key]
+            rowContainer.appendChild(contentTD)
         }
 
 
