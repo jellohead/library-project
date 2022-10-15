@@ -12,9 +12,29 @@
 
 <body>
     <h1>My Library</h1>
-    <div id="container">This is the div container
-
-    </div>
+    <form action="/my-handling-form-page" method="post">
+        <ul>
+            <li>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" />
+            </li>
+            <li>
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" />
+            </li>
+            <li>
+                <label for="pages">Pages</label>
+                <input type="text" id="pages" name="" />
+            </li>
+            <li>
+                <label for="read">Read (yes/no)</label>
+                <input type="text" id="read" name="read" />
+            </li>
+            <li class="button">
+                <button type="submit">Add your book</button>
+            </li>
+        </ul>
+    </form>
     <table id="bookRow">
         <div>Books</div>
         <tr>
