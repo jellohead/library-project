@@ -45,6 +45,10 @@ function showBooks() {
         const rowContainer = document.querySelector('.contentRow' + (index + 1))
         const contentTD = document.createElement('td');
         rowContainer.appendChild(contentTD)
+        for (let key in value) {
+            console.log("in object loop")
+            console.dir(value[key])
+        }
 
 
 
