@@ -24,12 +24,20 @@ function Book() {
     // the constructor
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(event) {
+    console.div(event)
     // add a book
 }
 
 // write function to loop through the books and display them on a page
 function showBooks() {
+
+    const form = document.querySelector('#bookForm')
+    form.addEventListener("submit", function (event) {
+        console.log("event is ")
+        console.dir(event)
+        addBookToLibrary(event)
+    })
 
     myLibrary.forEach(function element(value, index) {
         console.log("index is " + index);
@@ -60,4 +68,13 @@ function showBooks() {
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
     showBooks();
+    console.log("set event listener for submit button")
+    const form = document.querySelector('#bookForm')
+    console.dir(form)
+    form.addEventListener("submit", function (event) {
+        console.log("event is ")
+        console.dir(event)
+        addBookToLibrary(event)
+    })
+
 });
