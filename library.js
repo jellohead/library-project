@@ -46,13 +46,13 @@ function showBooks() {
         //add a row for myLibrary record
         const container = document.querySelector('#bookRow');
         const contentRow = document.createElement('tr');
-        contentRow.classList.add('contentRow' + (index + 1));
+        contentRow.classList.add('contentRow' + (index));
         // contentRow.textContent = 'This is a new table row';
         container.appendChild(contentRow)
 
         for (let key in value) {
             //add data from each book to the row
-            const rowContainer = document.querySelector('.contentRow' + (index + 1))
+            const rowContainer = document.querySelector('.contentRow' + (index))
             const contentTD = document.createElement('td');
             contentTD.textContent = value[key]
             rowContainer.appendChild(contentTD)
