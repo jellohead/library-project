@@ -20,12 +20,19 @@ let myLibrary = [{
 }
 ];
 
-function Book() {
-    // the constructor
+// constructor
+function Book(title, author, pages, read) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
 }
 
 function addBookToLibrary() {
     // add a book
+    // create a form to enter book data
+    // call constructor by clicking a button
+    // add book to myLibrary and append to table
 }
 
 // write function to loop through the books and display them on a page
