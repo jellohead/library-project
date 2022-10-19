@@ -35,6 +35,28 @@ function addBookToLibrary() {
     // add book to myLibrary and append to table
 }
 
+function sendData(data) {
+    console.log('Sending data')
+    const XHR = new XMLHttpRequest()
+    const urlEncodedDataPairs = []
+    for (const [name, value] of Object.entries(data)) {
+        urlEncodedDataPairs.push(`${encodeURIComponent(name)}=${encodeURIComponent(value)}`)
+    }
+
+    const urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+')
+    XHR.addEventListener('load', (event) => {
+        alert('Yeah! Data sent and response loaded')
+    })
+
+    XHR.addEventListener('error', (event) => {
+        alert('Oops! Something went wrong.')
+    })
+
+    XHR.open('POST', 't')
+}
+
+
+
 // write function to loop through the books and display them on a page
 function showBooks() {
 
@@ -67,4 +89,7 @@ function showBooks() {
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
     showBooks();
+
+    const btn = document.querySelector('button[type="submit"]')
+    console.log(btn)
 });
