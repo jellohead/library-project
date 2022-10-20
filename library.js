@@ -1,6 +1,7 @@
 // library.js
 // initial data
-let myLibrary = [{
+let myLibrary;
+const DEFAULT_DATA = [{
     title: "book1",
     author: "author1",
     pages: "pages1",
@@ -19,6 +20,12 @@ let myLibrary = [{
     read: "yes"
 }
 ];
+
+const $title = document.querySelector('#title');
+const $author = document.querySelector('#author');
+const $pages = document.querySelector('#pages');
+const $read = document.querySelector('#read');
+
 
 // constructor
 function Book(title, author, pages, read) {
@@ -59,12 +66,12 @@ function sendData(data) {
 // write function to loop through the books and display them on a page
 function showBooks() {
 
-    const form = document.querySelector('#bookForm')
-    form.addEventListener("submit", function (event) {
-        console.log("event is ")
-        console.dir(event)
-        addBookToLibrary(event)
-    })
+    // const form = document.querySelector('#bookForm')
+    // form.addEventListener("submit", function (event) {
+    //     console.log("event is ")
+    //     console.dir(event)
+    //     addBookToLibrary(event)
+    // })
 
     myLibrary.forEach(function element(value, index) {
         console.log("index is " + index);
@@ -84,29 +91,54 @@ function showBooks() {
             contentTD.textContent = value[key]
             rowContainer.appendChild(contentTD)
         }
-
-
-
-
     });
+}
 
+async function handleFormSubmit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const url = form.action;
 
+    try {
+        const formData = new FormData(form);
+        const responseData = await postFormDataAsJson({ url, formData });
+        console.log({ responseData });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function postFormDataAsJson({ url, formData }) {
+    const plainFormData = Object.fromEntries(formData.entries());
+    const formDataJsonString = JSON.stringify(plainFormData);
+
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: formDataJsonString,
+    };
+    const response = await fetch(url, fetchOptions);
+
+    if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+    }
+    return response.json()
 }
 
 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
     showBooks();
+
+    // get form data
     console.log("set event listener for submit button")
     const form = document.querySelector('#bookForm')
-    // console.log(form)
-    form.addEventListener("submit", function (event) {
-        console.log("event is ")
-        console.dir(event)
-        addBookToLibrary(event)
-    })
-
-    const btn = document.querySelector('#submitButton');
+    console.log(...form);
+    form.addEventListener("submit", handleFormSubmit);
 
 
 });
