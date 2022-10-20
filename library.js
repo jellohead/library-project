@@ -26,7 +26,6 @@ const $author = document.querySelector('#author');
 const $pages = document.querySelector('#pages');
 const $read = document.querySelector('#read');
 
-
 // constructor
 function Book(title, author, pages, read) {
     this.title = title
