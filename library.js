@@ -1,5 +1,5 @@
 // library.js
-
+// initial data
 let myLibrary = [{
     title: "book1",
     author: "author1",
@@ -25,7 +25,7 @@ function Book() {
 }
 
 function addBookToLibrary(event) {
-    console.div(event)
+    console.log(event)
     // add a book
 }
 
@@ -62,6 +62,8 @@ function showBooks() {
 
 
     });
+
+
 }
 
 
@@ -70,11 +72,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     showBooks();
     console.log("set event listener for submit button")
     const form = document.querySelector('#bookForm')
-    console.dir(form)
+    // console.log(form)
     form.addEventListener("submit", function (event) {
         console.log("event is ")
         console.dir(event)
         addBookToLibrary(event)
     })
+
+    const btn = document.querySelector('#submitButton');
+
 
 });
