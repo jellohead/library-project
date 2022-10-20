@@ -65,14 +65,6 @@ function sendData(data) {
 
 // write function to loop through the books and display them on a page
 function showBooks() {
-
-    // const form = document.querySelector('#bookForm')
-    // form.addEventListener("submit", function (event) {
-    //     console.log("event is ")
-    //     console.dir(event)
-    //     addBookToLibrary(event)
-    // })
-
     myLibrary.forEach(function element(value, index) {
         console.log("index is " + index);
         console.log("value is ");
