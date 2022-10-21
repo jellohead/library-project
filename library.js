@@ -26,7 +26,6 @@ const $author = document.querySelector('#author');
 const $pages = document.querySelector('#pages');
 const $read = document.querySelector('#read');
 
-
 // constructor
 function Book(title, author, pages, read) {
     this.title = title
@@ -45,22 +44,7 @@ function addBookToLibrary(event) {
 
 function sendData(data) {
     console.log('Sending data')
-    const XHR = new XMLHttpRequest()
-    const urlEncodedDataPairs = []
-    for (const [name, value] of Object.entries(data)) {
-        urlEncodedDataPairs.push(`${encodeURIComponent(name)}=${encodeURIComponent(value)}`)
-    }
 
-    const urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+')
-    XHR.addEventListener('load', (event) => {
-        alert('Yeah! Data sent and response loaded')
-    })
-
-    XHR.addEventListener('error', (event) => {
-        alert('Oops! Something went wrong.')
-    })
-
-    XHR.open('POST', 't')
 }
 
 // write function to loop through the books and display them on a page
@@ -92,41 +76,6 @@ function showBooks() {
             rowContainer.appendChild(contentTD)
         }
     });
-}
-
-async function handleFormSubmit(event) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const url = form.action;
-
-    try {
-        const formData = new FormData(form);
-        const responseData = await postFormDataAsJson({ url, formData });
-        console.log({ responseData });
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-async function postFormDataAsJson({ url, formData }) {
-    const plainFormData = Object.fromEntries(formData.entries());
-    const formDataJsonString = JSON.stringify(plainFormData);
-
-    const fetchOptions = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: formDataJsonString,
-    };
-    const response = await fetch(url, fetchOptions);
-
-    if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-    }
-    return response.json()
 }
 
 
