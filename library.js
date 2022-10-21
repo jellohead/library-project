@@ -26,6 +26,7 @@ const $author = document.querySelector('#author');
 const $pages = document.querySelector('#pages');
 const $read = document.querySelector('#read');
 
+
 // constructor
 function Book(title, author, pages, read) {
     this.title = title
@@ -36,27 +37,23 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(event) {
     console.log(event)
-    // add a book
-    // create a form to enter book data
-    // call constructor by clicking a button
-    // add book to myLibrary and append to table
+    const newBook = new Book($title.title, $author.author, $pages.pages, $read.read);
+    myLibrary.push(newBook);
+    updateLocalStorage();
 }
 
-function sendData(data) {
-    console.log('Sending data')
-
+function updateLocalStorage() {
+    if (localStorage.getItem('myLibrary')) {
+        myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+    } else {
+        myLibrary = DEFAULT_DATA;
+    }
 }
+
+
 
 // write function to loop through the books and display them on a page
 function showBooks() {
-
-    // const form = document.querySelector('#bookForm')
-    // form.addEventListener("submit", function (event) {
-    //     console.log("event is ")
-    //     console.dir(event)
-    //     addBookToLibrary(event)
-    // })
-
     myLibrary.forEach(function element(value, index) {
         console.log("index is " + index);
         console.log("value is ");
@@ -78,6 +75,10 @@ function showBooks() {
     });
 }
 
+function render() {
+    checkLocalStorage();
+}
+
 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
@@ -86,7 +87,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // get form data
     console.log("set event listener for submit button")
     const form = document.querySelector('#bookForm')
-    console.log(...form);
+    console.log(form);
     form.addEventListener("submit", handleFormSubmit);
 
 
