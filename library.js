@@ -1,6 +1,6 @@
 // library.js
 // initial data
-let myLibrary;
+let myLibrary = [];
 const DEFAULT_DATA = [{
     title: "book1",
     author: "author1",
@@ -25,6 +25,12 @@ const $title = document.querySelector('#title');
 const $author = document.querySelector('#author');
 const $pages = document.querySelector('#pages');
 const $read = document.querySelector('#read');
+const $form = document.querySelector('#bookForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    addBookToLibrary();
+    render();
+    clearForm();
+});
 
 
 // constructor
@@ -40,6 +46,9 @@ function addBookToLibrary(event) {
     const newBook = new Book($title.title, $author.author, $pages.pages, $read.read);
     myLibrary.push(newBook);
     updateLocalStorage();
+}
+
+function clearForm() {
 }
 
 function updateLocalStorage() {
@@ -77,6 +86,10 @@ function showBooks() {
 
 function render() {
     checkLocalStorage();
+}
+
+function handleFormSubmit() {
+    console.log("handlFormSubmit function")
 }
 
 
