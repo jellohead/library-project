@@ -37,9 +37,10 @@ function addBookToLibrary() {
     console.log('adding a book to myLibrary')
     const newBook = new Book($title.value, $author.value, $pages.value, $read.value);
     myLibrary.push(newBook);
+    console.log("added a new book");
     console.log(myLibrary.length);
     console.dir(myLibrary);
-    updateMyBooks(myLibrary.length - 1);
+    updateMyBooks();
 }
 
 // write function to loop through the books and display them on a page
@@ -53,14 +54,9 @@ function showBooks() {
     })
 
     myLibrary.forEach(function element(value, index) {
-        // console.log("index is " + index);
-        // console.log("value is ");
-        // console.dir(value)
-        //add a row for myLibrary record
         const container = document.querySelector('#bookRow');
         const contentRow = document.createElement('tr');
         contentRow.classList.add('contentRow' + (index));
-        // contentRow.textContent = 'This is a new table row';
         container.appendChild(contentRow)
 
         for (let key in value) {
@@ -73,29 +69,55 @@ function showBooks() {
     });
 }
 
-function updateMyBooks(index) {
-    myLibrary.forEach(function element(value, index) {
-        // console.log("index is " + index);
-        // console.log("value is ");
-        // console.dir(value)
-        //add a row for myLibrary record
-        const container = document.querySelector('#bookRow');
-        const contentRow = document.createElement('tr');
-        contentRow.classList.add('contentRow' + (index));
-        // contentRow.textContent = 'This is a new table row';
-        container.appendChild(contentRow)
+function updateMyBooks() {
+    const recordNumber = myLibrary.length - 1;
+    console.log(recordNumber);
+    const bookToAdd = myLibrary.slice(-1);
+    console.dir(bookToAdd);
 
-        for (let key in value) {
-            //add data from each book to the row
-            const rowContainer = document.querySelector('.contentRow' + (index))
-            const contentTD = document.createElement('td');
-            contentTD.textContent = value[key]
-            rowContainer.appendChild(contentTD)
-        }
+    const container = document.querySelector('#bookRow');
+    const contentRow = document.createElement('tr');
+    contentRow.classList.add('contentRow' + recordNumber);
+    container.appendChild(contentRow)
+
+    Object.values(bookToAdd).forEach((value, key) => {
+        console.log(value[key]);
+        const rowContainer = document.querySelector('.contentRow' + (recordNumber))
+        const contentTD = document.createElement('td');
+        contentTD.textContent = val[key];
+        rowContainer.appendChild(contentTD)
+
+
+
     });
+    // Object.values(myLibrary.slice(-1)).forEach(value => console.log(value));
 
+    // Object.entries(bookToAdd).forEach(([key, value]) => {
+    //     console.log(`${key} -> ${value}`)
+    // })
 
-}
+    // Object.values(bookToAdd).forEach(item => console.log(item));
+    // for (let key in bookToAdd) {
+    //     console.log(bookToAdd[key])
+    // }
+
+    // bookToAdd.forEach(function element(value) {
+    //     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
+    //     const contentTD = document.createElement('td');
+    //     contentTD.textContent = value
+    //     rowContainer.appendChild(contentTD)
+
+    // })
+
+    // for (let key in bookToAdd.value) {
+    //     //         //add data from each book to the row
+    //     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
+    //     const contentTD = document.createElement('td');
+    //     contentTD.textContent = value[key]
+    //     rowContainer.appendChild(contentTD)
+    // }
+};
+
 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
