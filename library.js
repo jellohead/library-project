@@ -80,43 +80,61 @@ function updateMyBooks() {
     contentRow.classList.add('contentRow' + recordNumber);
     container.appendChild(contentRow)
 
-    Object.values(bookToAdd).forEach((value, key) => {
-        console.log(value[key]);
-        const rowContainer = document.querySelector('.contentRow' + (recordNumber))
-        const contentTD = document.createElement('td');
-        contentTD.textContent = val[key];
-        rowContainer.appendChild(contentTD)
+    const rowContainer = document.querySelector('.contentRow' + (recordNumber))
 
+    contentTD = document.createElement('td');
+    contentTD.textContent = $title;
+    rowContainer.appendChild(contentTD)
 
+    contentTD = document.createElement('td');
+    contentTD.textContent = $author;
+    rowContainer.appendChild(contentTD)
 
-    });
-    // Object.values(myLibrary.slice(-1)).forEach(value => console.log(value));
+    contentTD = document.createElement('td');
+    contentTD.textContent = $pages;
+    rowContainer.appendChild(contentTD)
 
-    // Object.entries(bookToAdd).forEach(([key, value]) => {
-    //     console.log(`${key} -> ${value}`)
-    // })
+    contentTD = document.createElement('td');
+    contentTD.textContent = $read;
+    rowContainer.appendChild(contentTD)
 
-    // Object.values(bookToAdd).forEach(item => console.log(item));
-    // for (let key in bookToAdd) {
-    //     console.log(bookToAdd[key])
-    // }
-
-    // bookToAdd.forEach(function element(value) {
+    // Object.values(bookToAdd).forEach((value, key) => {
+    //     console.log(value[key]);
     //     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
     //     const contentTD = document.createElement('td');
-    //     contentTD.textContent = value
+    //     contentTD.textContent = val[key];
     //     rowContainer.appendChild(contentTD)
 
-    // })
 
-    // for (let key in bookToAdd.value) {
-    //     //         //add data from each book to the row
-    //     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
-    //     const contentTD = document.createElement('td');
-    //     contentTD.textContent = value[key]
-    //     rowContainer.appendChild(contentTD)
-    // }
+
 };
+// Object.values(myLibrary.slice(-1)).forEach(value => console.log(value));
+
+// Object.entries(bookToAdd).forEach(([key, value]) => {
+//     console.log(`${key} -> ${value}`)
+// })
+
+// Object.values(bookToAdd).forEach(item => console.log(item));
+// for (let key in bookToAdd) {
+//     console.log(bookToAdd[key])
+// }
+
+// bookToAdd.forEach(function element(value) {
+//     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
+//     const contentTD = document.createElement('td');
+//     contentTD.textContent = value
+//     rowContainer.appendChild(contentTD)
+
+// })
+
+// for (let key in bookToAdd.value) {
+//     //         //add data from each book to the row
+//     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
+//     const contentTD = document.createElement('td');
+//     contentTD.textContent = value[key]
+//     rowContainer.appendChild(contentTD)
+// }
+
 
 
 window.addEventListener('DOMContentLoaded', (event) => {
