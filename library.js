@@ -24,6 +24,12 @@ const $title = document.querySelector('#title');
 const $author = document.querySelector('#author');
 const $pages = document.querySelector('#pages');
 const $read = document.querySelector('#read');
+const $form = document.querySelector('#bookForm').addEventListener("submit", (e) => {
+    e.preventDefault();
+    addBookToLibrary();
+    render();
+    clearForm();
+});
 
 // constructor
 function Book(title, author, pages, read) {
@@ -45,14 +51,6 @@ function addBookToLibrary() {
 
 // write function to loop through the books and display them on a page
 function showBooks() {
-
-    const form = document.querySelector('#bookForm')
-    form.addEventListener("submit", function (event) {
-        console.log("event is ")
-        console.dir(event)
-        addBookToLibrary(event)
-    })
-
     myLibrary.forEach(function element(value, index) {
         const container = document.querySelector('#bookRow');
         const contentRow = document.createElement('tr');
@@ -83,72 +81,34 @@ function updateMyBooks() {
     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
 
     contentTD = document.createElement('td');
-    contentTD.textContent = $title;
+    contentTD.textContent = $title.value;
     rowContainer.appendChild(contentTD)
 
     contentTD = document.createElement('td');
-    contentTD.textContent = $author;
+    contentTD.textContent = $author.value;
     rowContainer.appendChild(contentTD)
 
     contentTD = document.createElement('td');
-    contentTD.textContent = $pages;
+    contentTD.textContent = $pages.value;
     rowContainer.appendChild(contentTD)
 
     contentTD = document.createElement('td');
-    contentTD.textContent = $read;
+    contentTD.textContent = $read.value;
     rowContainer.appendChild(contentTD)
-
-    // Object.values(bookToAdd).forEach((value, key) => {
-    //     console.log(value[key]);
-    //     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
-    //     const contentTD = document.createElement('td');
-    //     contentTD.textContent = val[key];
-    //     rowContainer.appendChild(contentTD)
-
-
-
 };
-// Object.values(myLibrary.slice(-1)).forEach(value => console.log(value));
 
-// Object.entries(bookToAdd).forEach(([key, value]) => {
-//     console.log(`${key} -> ${value}`)
-// })
+function render() {
+}
 
-// Object.values(bookToAdd).forEach(item => console.log(item));
-// for (let key in bookToAdd) {
-//     console.log(bookToAdd[key])
-// }
-
-// bookToAdd.forEach(function element(value) {
-//     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
-//     const contentTD = document.createElement('td');
-//     contentTD.textContent = value
-//     rowContainer.appendChild(contentTD)
-
-// })
-
-// for (let key in bookToAdd.value) {
-//     //         //add data from each book to the row
-//     const rowContainer = document.querySelector('.contentRow' + (recordNumber))
-//     const contentTD = document.createElement('td');
-//     contentTD.textContent = value[key]
-//     rowContainer.appendChild(contentTD)
-// }
-
-
+function clearForm() {
+    $title.value = "";
+    $author.value = "";
+    $pages.value = "";
+    $read.value = "";
+}
 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
+    // populate table with default data
     showBooks();
-    console.log("set event listener for submit button")
-    const form = document.querySelector('#bookForm')
-    console.log(form)
-    const btn = document.getElementById('submitButton');
-    btn.addEventListener("click", function (event) {
-        console.log('clicked the submit button');
-        console.log("event is ")
-        console.dir(event)
-        addBookToLibrary()
-    })
-    // const btn = document.querySelector('#submitButton');
 });
